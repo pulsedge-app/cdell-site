@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conveyancing Direct</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --gold: #b8963e;
+    --gold-light: #d4ae62;
+    --cream: #f8f6f1;
+    --muted: #6b6560;
+    --white: #ffffff;
+    --border: rgba(184,150,62,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--ink);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(26,26,26,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    text-decoration: none;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .logo span { color: var(--gold); }
+
+  .nav-cta {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border: 0.5px solid var(--gold);
+    padding: 0.5rem 1.25rem;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    background:
+      linear-gradient(to bottom, rgba(26,26,26,0.72) 0%, rgba(26,26,26,0.55) 50%, rgba(26,26,26,0.88) 100%),
+      url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80') center/cover no-repeat;
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .eyebrow::before, .eyebrow::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 0.5px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .eyebrow-sub {
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: 0.01em;
+    color: var(--white);
+    max-width: 800px;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--gold-light);
+  }
+
+  .subhead {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.03em;
+    margin-bottom: 3rem;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    border: 0.5px solid rgba(255,255,255,0.35);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  /* CONTACT SECTION */
+  .contact {
+    background: var(--cream);
+    color: var(--ink);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .contact .eyebrow { color: var(--gold); justify-content: center; }
+
+  .contact h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .contact p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .cards {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .card {
+    flex: 1;
+    min-width: 260px;
+    background: var(--white);
+    border: 0.5px solid rgba(184,150,62,0.2);
+    padding: 2rem 1.75rem;
+    text-align: left;
+    text-decoration: none;
+    color: inherit;
+    cursor: default;
+    pointer-events: none;
+    position: relative;
+  }
+
+  .card-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+
+  .card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  .card-email {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.06em;
+    border-top: 0.5px solid rgba(184,150,62,0.15);
+  }
+
+  footer span { color: var(--gold); opacity: 0.6; }
+
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.25rem; }
+    .cta-group { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Conveyancing Direct <span>·</span> Property Lawyers</span>
+  <span class="nav-cta">Get in touch</span>
+</nav>
+
+<section class="hero">
+  <p class="eyebrow">cdell.co.uk</p>
+  <p class="eyebrow-sub">Conveyancing Direct</p>
+  <h1>Property Lawyers for Sales,<br><em>Purchases & Remortgages</em></h1>
+  <p class="subhead">Get in touch with our team today</p>
+  <div class="cta-group">
+    <span class="btn-primary">Email enquiries</span>
+    <span class="btn-secondary">Meet the team</span>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <p class="eyebrow">Contact us</p>
+  <h2>Speak to our team</h2>
+  <p>We handle property sales, purchases and remortgages across England and Wales.</p>
+
+  <div class="cards">
+    <div class="card">
+      <p class="card-label">General enquiries</p>
+      <p class="card-name">Conveyancing Direct</p>
+      <p class="card-email">enquiries@cdell.co.uk</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Conveyancing Direct</span> &nbsp;·&nbsp; cdell.co.uk
+</footer>
+
+</body>
+</html>
